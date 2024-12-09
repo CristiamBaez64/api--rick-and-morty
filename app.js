@@ -8,15 +8,15 @@ const resolvers = require('./resolvers');
 const app = express()
 
 
-// Middleware
+// Middleware - Logs HTTP
 app.use(morgan('dev'));
 
-
+// GraphQL
 const server = new ApolloServer({
     typeDefs, resolvers
 });
 
-
+// Run server
 async function startServer(){
     await server.start();
     server.applyMiddleware({ app });
